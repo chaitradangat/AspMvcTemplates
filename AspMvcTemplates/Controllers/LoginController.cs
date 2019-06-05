@@ -9,9 +9,5 @@ namespace AspMvcTemplates.Controllers
         {
             return View();
         }
-
-
-
-
     }
 }
