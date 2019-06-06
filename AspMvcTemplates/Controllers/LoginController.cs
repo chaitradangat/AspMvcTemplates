@@ -8,6 +8,7 @@ namespace AspMvcTemplates.Controllers
     public class LoginController : Controller
     {
         [HttpGet]
+        [Route("Validate/Login")]
         public ActionResult Validate()
         {
             ViewBag.Title = "Validate";
@@ -23,6 +24,8 @@ namespace AspMvcTemplates.Controllers
             var password = loginModel.Password;
 
             var rememberuser = loginModel.RememberMe;
+
+            var updtmodel = TryUpdateModel<LoginViewModel>(loginModel);
 
             return View(loginModel);
         }
