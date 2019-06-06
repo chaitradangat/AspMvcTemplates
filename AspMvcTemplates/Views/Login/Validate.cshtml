@@ -1,6 +1,6 @@
 ﻿@using AspMvcTemplates.Models
 
-@model LoginModel
+@model LoginViewModel
 
 <h2>@ViewBag.Title</h2>
 
@@ -17,6 +17,8 @@
         <div>UserName</div><div>@Html.TextBoxFor(x => x.UserName)</div>
 
         <div>Password</div><div>@Html.TextBoxFor(x => x.Password)</div>
+
+        <div>Remember Me</div><div>@Html.CheckBoxFor(x=>x.RememberMe)</div>
 
         <div><input type="submit" name="Submit" value="Submit" /></div>
     }
