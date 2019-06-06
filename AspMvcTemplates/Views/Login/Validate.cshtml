@@ -1,6 +1,20 @@
-﻿@{
-    ViewBag.Title = "Validate";
-}
+﻿@using AspMvcTemplates.Models
+
+@model LoginModel
 
 <h2>@ViewBag.Title</h2>
 
+
+<div>
+
+
+    @using (Html.BeginForm("Validate","Login",FormMethod.Post))
+    {
+        <div>UserName</div><div>@Html.TextBoxFor(x => x.UserName)</div>
+
+        <div>Password</div><div>@Html.TextBoxFor(x => x.Password)</div>
+
+        <div><input type="submit" name="Submit" value="Submit" /></div>
+    }
+
+</div>
