@@ -12,16 +12,18 @@ namespace AspMvcTemplates.Controllers
         {
             ViewBag.Title = "Validate";
 
-
             return View();
         }
 
         [HttpPost]
         public ActionResult Validate(LoginModel loginModel)
         {
-            return View();
-        }
+            var username = loginModel.UserName;
 
+            var password = loginModel.Password;
+
+            return View(loginModel);
+        }
 
     }
 }
