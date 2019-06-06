@@ -16,11 +16,13 @@ namespace AspMvcTemplates.Controllers
         }
 
         [HttpPost]
-        public ActionResult Validate(LoginModel loginModel)
+        public ActionResult Validate(LoginViewModel loginModel)
         {
             var username = loginModel.UserName;
 
             var password = loginModel.Password;
+
+            var rememberuser = loginModel.RememberMe;
 
             return View(loginModel);
         }
