@@ -1,14 +1,14 @@
 ﻿using System.Web;
 using System.Web.Mvc;
 using AspMvcTemplates.Models;
-
+using AspMvcTemplates.Application;
 
 namespace AspMvcTemplates.Controllers
 {
     public class LoginController : Controller
     {
         [HttpGet]
-        [Route("Validate/Login")]
+        //[Route("Validate/Login")]
         public ActionResult Validate()
         {
             ViewBag.Title = "Validate";
@@ -19,13 +19,27 @@ namespace AspMvcTemplates.Controllers
         [HttpPost]
         public ActionResult Validate(LoginViewModel loginModel)
         {
-            var username = loginModel.UserName;
+            if (Session["user"] is null)
+            {
+                CommonUtility utility = new CommonUtility();
 
-            var password = loginModel.Password;
+                bool rememberuser = loginModel.RememberMe;
 
-            var rememberuser = loginModel.RememberMe;
+                string username = loginModel.UserName;
 
-            var updtmodel = TryUpdateModel<LoginViewModel>(loginModel);
+                string password = loginModel.Password;
+
+                string userid = "";
+
+                if (utility.ValidateLoginCredentials(username, password,ref userid))
+                {
+                    Session["user"] = userid;
+                }
+                else
+                {
+                    Session["user"] = null;
+                }
+            }
 
             return View(loginModel);
         }
